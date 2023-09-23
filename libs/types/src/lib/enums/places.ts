@@ -1,5 +1,4 @@
 // ### Places
-
 export enum Places {
   Place_0,
   Place_1,
