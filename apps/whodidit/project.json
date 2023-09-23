@@ -1,0 +1,91 @@
+{
+  "name": "whodidit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/whodidit/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/whodidit",
+        "index": "apps/whodidit/src/index.html",
+        "main": "apps/whodidit/src/main.ts",
+        "polyfills": "apps/whodidit/src/polyfills.ts",
+        "tsConfig": "apps/whodidit/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/whodidit/src/favicon.ico", "apps/whodidit/src/assets"],
+        "styles": ["apps/whodidit/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/whodidit/src/environments/environment.ts",
+              "with": "apps/whodidit/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "whodidit:build:production"
+        },
+        "development": {
+          "browserTarget": "whodidit:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "whodidit:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/whodidit/src/test.ts",
+        "polyfills": "apps/whodidit/src/polyfills.ts",
+        "tsConfig": "apps/whodidit/tsconfig.spec.json",
+        "karmaConfig": "apps/whodidit/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/whodidit/src/favicon.ico", "apps/whodidit/src/assets"],
+        "styles": ["apps/whodidit/src/styles.scss"],
+        "scripts": []
+      }
+    }
+  }
+}
