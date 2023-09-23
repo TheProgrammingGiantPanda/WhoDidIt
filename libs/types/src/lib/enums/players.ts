@@ -9,4 +9,17 @@ export enum Players {
   Player_6,
   Player_7,
 }
-// ###EndPlayers
+// ### EndPlayers
+
+// ### AllPlayers
+export const AllPlayers: Players[] = [
+  Players.Player_0,
+  Players.Player_1,
+  Players.Player_2,
+  Players.Player_3,
+  Players.Player_4,
+  Players.Player_5,
+  Players.Player_6,
+  Players.Player_7,
+];
+// ### EndAllPlayers
